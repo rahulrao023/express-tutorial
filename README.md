@@ -12,6 +12,8 @@
 
 ```localhost:8800/``` is the home page.
 
+```http://localhost:8800/all_users``` displays the data in the web page.
+
 ```http://localhost:8800/users/all_users``` gives all users in json format.
 
 ```http://localhost:8800/users/user?id=1``` will give the user details of an individual user.
