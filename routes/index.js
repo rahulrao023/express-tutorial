@@ -10,7 +10,16 @@ router.use(function(req,res,next) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express', users : [] });
+  res.sendFile('/home/rahul/Desktop/rahul/express-tutorial/public/html/index.html');
+  // res.render('index', { title: 'Express', users : [] });
+});
+
+router.post('/', function(req,res) {
+  console.log(req.body.fname + req.body.lname);
+  res.json({
+    fname : req.body.fname,
+    lname : req.body.lname
+  });
 });
 
 router.get('/all_users', async function(req, res) {
