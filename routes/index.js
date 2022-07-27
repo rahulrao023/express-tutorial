@@ -1,5 +1,6 @@
 var express = require('express');
 const axios = require('axios');
+const cookieParser = require('cookie-parser');
 
 var router = express.Router();
 
@@ -15,11 +16,22 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req,res) {
-  console.log(req.body.fname + req.body.lname);
+  console.log(req.body.fname + req.body.lname + JSON.stringify(req.cookies));
+  const user = {
+    fname: res.req.body.fname,
+    lname: res.req.body.lname
+  };
+  res.cookie("user", user);
+
   res.json({
     fname : req.body.fname,
-    lname : req.body.lname
+    lname : req.body.lname,
+    cookies : res.cookies
   });
+});
+
+router.get('/get_cookies', function(req,res) {
+  res.json(req.cookies);
 });
 
 router.get('/all_users', async function(req, res) {
